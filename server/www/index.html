@@ -1,0 +1,92 @@
+<!doctype html>
+<html ng-app="OversightApp" xmlns:ng="http://angularjs.org">
+<head>
+  <title>Oversight</title>
+  <link rel="stylesheet" 
+        href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" 
+        href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" 
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script 
+    type="text/javascript" 
+    src="js/oversight.min.js">
+  </script>
+  <script>
+    Oversight.setUrl('/error');
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js">
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js">
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js">
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js">
+  </script>
+  <script 
+    type="text/javascript" 
+    src="http://cdnjs.cloudflare.com/ajax/libs/highcharts/4.0.4/highcharts.js">
+  </script>
+
+  <script 
+    type="text/javascript" 
+    src="js/highcharts-ng.min.js">
+  </script>
+
+  <script 
+    type="text/javascript" 
+    src="js/display.js">
+  </script>
+
+</head>
+<body>
+
+<div id="oversight" class="pure-g" ng-controller="ErrorsController">
+  <div class="pure-u-1">
+    <header class="header" onclick="console.log(hello)">
+      <h1><i class="fa fa-eye"></i> Oversight</h1>
+    </header>
+  </div>
+  <div class="pure-u-1" id="highcharts">
+    <highchart config="chartConfig"></highchart>
+  </div>
+  <div class="pure-u-1">
+    <table class="pure-table pure-table-bordered">
+      <thead>
+        <tr><th ng-repeat="key in errorKeys" ng-bind="key"></th></tr>
+      </thead>
+      <tbody ng-repeat="error in errors">
+        <tr ng-hide="$parent.activeTrace === error._id"ng-click="$parent.activeTrace = error._id;"> 
+          <td ng-repeat="key in errorKeys" ng-bind="error[key]"></td>
+        </tr>
+        <tr ng-show="$parent.activeTrace === error._id" class="error-content">
+          <td colspan="{{errorKeys.length}}">
+            <ul>
+              <li ng-repeat="key in errorKeys">
+                <strong ng-bind="key"></strong>: 
+                <span ng-bind="error[key]"></span>
+              </li>
+            </ul>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

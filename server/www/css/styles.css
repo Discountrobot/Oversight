@@ -1,0 +1,54 @@
+
+#oversight header {
+    text-align: center;
+}
+
+#oversight .pure-table {
+    margin: 0 auto 20px auto;
+}
+
+#oversight table {
+    width: 90%;
+}
+
+#oversight table tbody tr:hover {
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+#oversight table tbody tr.error-content:hover {
+    background: none;
+    cursor: auto;
+}
+
+#oversight table tr td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#oversight table tbody.ng-enter { 
+    opacity: 0;
+    transition: opacity .35s ease-in-out;
+    -moz-transition: opacity .35s ease-in-out;
+    -webkit-transition: opacity .35s ease-in-out;
+}
+
+#oversight table tbody.ng-enter-active {
+    opacity: 1;
+}
+
+#oversight table tbody.ng-leave {
+    opacity: 0;
+}
+
+#oversight table tr.error-content td {
+    border-bottom: 1px solid #CBCBCB;
+}
+
+#highcharts {
+    width: 90%;
+    margin: 0 auto;
+}
+
